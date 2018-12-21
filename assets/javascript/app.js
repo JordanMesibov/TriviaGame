@@ -51,10 +51,16 @@ function gameOver () {
 // create an array of riddles with properties
 var riddles = [{
     riddleText: ["The older I am, the shorter I am. The younger I am, the taller I am. What am I?", "Insert the second riddle here", "Insert the third riddle here"],
-    riddleChoices: ["A: insert the first choice for the first riddle here", "B: insert the second choice for the first riddle here", "C: insert the first riddles third choice"],
-}]
+    riddleChoices: ["A Candle", "B: insert the second choice for the first riddle here", "C: insert the first riddles third choice"]
+}];
 
 // declare the function that will display the riddles to the riddleDisplay div
 function riddlesGo () {
   $("#riddleDisplay").html(riddles[0].riddleText[0]);
+  $("#riddleDisplay").append("<br>");
+  $("#riddleDisplay").append($("<button>" + riddles[0].riddleChoices[0] + "</button>"));
+  $("#riddleDisplay").append("<br>");
+  $("#riddleDisplay").append($("<button>" + riddles[0].riddleChoices[1] + "</button>"));
+  $("#riddleDisplay").append("<br>");
+  $("#riddleDisplay").append($("<button>" + riddles[0].riddleChoices[2] + "</button>"));
 }
