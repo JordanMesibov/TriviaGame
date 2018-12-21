@@ -48,7 +48,7 @@ function count () {
 function gameOver () {
   clearInterval(intervalID);
   time = 0;
-  $("#riddleDisplay").html("<h3>Game Over!</h3>");
+  endOfRiddles();
 }
 
 
