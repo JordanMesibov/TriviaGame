@@ -51,8 +51,8 @@ function gameOver () {
 // create an array of riddles with properties
 var riddles = [{
     riddleText: ["The older I am, the shorter I am. The younger I am, the taller I am. What am I?", "Insert the second riddle here", "Insert the third riddle here"],
-    riddleChoices: ["A Candle", "A Tree", "A Person"],
-    correctChoice: ["A Candle"]
+    riddleChoices: ["A Candle", "A Tree", "A Person", "2 option 1", "2 option 2", "2 option 3", "3 option 1", "3 option 2", "3 option 3"],
+    correctChoice: ["A Candle", "2 Correct", "3 Correct"]
 }];
 
 // declare the function that will display the riddles to the riddleDisplay div
@@ -72,17 +72,85 @@ function riddlesGo () {
   // append the third option for answering the riddle as a newly created button, also with class of incorrect0 to the riddleDisplay div
   $("#riddleDisplay").append($("<button id='incorrect00'>" + riddles[0].riddleChoices[2] + "</button>"));
   // add event listeners for the right and wrong choices/buttons to trigger the correctScreen and incorrectScreen functions declared globally, afterwards
-  document.getElementById("correct0").addEventListener("click", correctScreen);
-  document.getElementById("incorrect0").addEventListener("click", incorrectScreen);
-  document.getElementById("incorrect00").addEventListener("click", incorrectScreen);
+  document.getElementById("correct0").addEventListener("click", correctScreen0);
+  console.log(correctScreen0);
+  document.getElementById("incorrect0").addEventListener("click", incorrectScreen0);
+  console.log(incorrectScreen0);
+  document.getElementById("incorrect00").addEventListener("click", incorrectScreen0);
+  console.log(incorrectScreen0);
 }
 
 // make the function that will show the Correct! screen and display it to the riddleDisplay div
-function correctScreen () {
+function correctScreen0 () {
   $("#riddleDisplay").html("<h1>Correct!</h1>");
+  $("#riddleDisplay").append($("<button id='Next0'><h1>Next Riddle!</h1></button>"));
+  document.getElementById("Next0").addEventListener("click", riddlesGoNext);
 }
 
 // make the function that will show the Incorrect! screen and display it to the riddleDisplay div
-function incorrectScreen () {
+function incorrectScreen0 () {
   $("#riddleDisplay").html("<h1>Incorrect!</h1>");
+  //insert a button to trigger the next riddle
+  $("#riddleDisplay").append($("<button id='Next00'><h1>Next Riddle!</h1></button>"));
+  document.getElementById("Next00").addEventListener("click", riddlesGoNext);
+}
+
+function riddlesGoNext () {
+  $("#riddleDisplay").html("<h2>" + riddles[0].riddleText[1] + "</h2>");
+  // add a line break
+  $("#riddleDisplay").append("<br>");
+  // append the first option for answering the riddle as a newly created button with an id of correct0 to the riddleDisplay div
+  $("#riddleDisplay").append($("<button id='correct1'>" + riddles[0].riddleChoices[3] + "</button>"));
+  // add another line break
+  $("#riddleDisplay").append("<br>");
+  // append the second option for answering the riddle as a newly created button with a class of incorrect0 to the riddleDisplay div
+  $("#riddleDisplay").append($("<button id='incorrect1'>" + riddles[0].riddleChoices[4] + "</button>"));
+  // add another line break
+  $("#riddleDisplay").append("<br>");
+  // append the third option for answering the riddle as a newly created button, also with class of incorrect0 to the riddleDisplay div
+  $("#riddleDisplay").append($("<button id='incorrect01'>" + riddles[0].riddleChoices[5] + "</button>"));
+  // add event listeners for the right and wrong choices/buttons to trigger the correctScreen and incorrectScreen functions declared globally, afterwards
+  document.getElementById("correct1").addEventListener("click", correctScreen1);
+  console.log(correctScreen1);
+  document.getElementById("incorrect1").addEventListener("click", incorrectScreen1);
+  console.log(incorrectScreen1);
+  document.getElementById("incorrect01").addEventListener("click", incorrectScreen1);
+  console.log(incorrectScreen1);
+}
+
+function correctScreen1 () {
+  $("#riddleDisplay").html("<h1>Correct!</h1>");
+  $("#riddleDisplay").append($("<button id='Next2'><h1>Next Riddle!</h1></button>"));
+  document.getElementById("Next2").addEventListener("click", riddlesGoNext1);
+}
+
+// make the function that will show the Incorrect! screen and display it to the riddleDisplay div
+function incorrectScreen1 () {
+  $("#riddleDisplay").html("<h1>Incorrect!</h1>");
+  $("#riddleDisplay").append($("<button id='Next02'><h1>Next Riddle!</h1></button>"));
+  document.getElementById("Next02").addEventListener("click", riddlesGoNext1);
+}
+
+// this will be the final riddle and will trigger a results screen at the end!
+function riddlesGoNext1 () {
+  $("#riddleDisplay").html("<h2>" + riddles[0].riddleText[2] + "</h2>");
+  // add a line break
+  $("#riddleDisplay").append("<br>");
+  // append the first option for answering the riddle as a newly created button with an id of correct0 to the riddleDisplay div
+  $("#riddleDisplay").append($("<button id='correct2'>" + riddles[0].riddleChoices[6] + "</button>"));
+  // add another line break
+  $("#riddleDisplay").append("<br>");
+  // append the second option for answering the riddle as a newly created button with a class of incorrect0 to the riddleDisplay div
+  $("#riddleDisplay").append($("<button id='incorrect2'>" + riddles[0].riddleChoices[7] + "</button>"));
+  // add another line break
+  $("#riddleDisplay").append("<br>");
+  // append the third option for answering the riddle as a newly created button, also with class of incorrect0 to the riddleDisplay div
+  $("#riddleDisplay").append($("<button id='incorrect02'>" + riddles[0].riddleChoices[8] + "</button>"));
+  // add event listeners for the right and wrong choices/buttons to trigger the correctScreen and incorrectScreen functions declared globally, afterwards
+  document.getElementById("correct2").addEventListener("click", correctScreen2);
+  console.log(correctScreen2);
+  document.getElementById("incorrect2").addEventListener("click", incorrectScreen2);
+  console.log(incorrectScreen2);
+  document.getElementById("incorrect02").addEventListener("click", incorrectScreen2);
+  console.log(incorrectScreen2);
 }
