@@ -17,7 +17,7 @@ function reset() {
   time = 90;
   timesUp = false;
   timerRunning = false;
-
+  $("#riddleDisplay").empty();
   $("#timerDisplay").html("<h3>Time Remaining: " + time + " seconds</h3>");
 }
 
@@ -56,5 +56,5 @@ var riddles = [{
 
 // declare the function that will display the riddles to the riddleDisplay div
 function riddlesGo () {
-  $("#riddleDisplay").html(riddles[0].riddleText);
+  $("#riddleDisplay").html(riddles[0].riddleText[0]);
 }
