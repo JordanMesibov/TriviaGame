@@ -54,9 +54,8 @@ function gameOver () {
 
 // create an array of riddles with properties
 var riddles = [{
-    riddleText: ["The older I am, the shorter I am. The younger I am, the taller I am. What am I?", "Insert the second riddle here", "Insert the third riddle here"],
-    riddleChoices: ["A Candle", "A Tree", "A Person", "2 option 1", "2 option 2", "2 option 3", "3 option 1", "3 option 2", "3 option 3"],
-    correctChoice: ["A Candle", "2 Correct", "3 Correct"]
+    riddleText: ["The older I am, the shorter I am. The younger I am, the taller I am. What am I?", "What can you add to a bucket of water in order to make it lighter?", "Forwards I am heavy, but backwards I am not. What am I?"],
+    riddleChoices: ["A Candle", "A Tree", "A Person", "Holes", "Feathers", "A Shadow", "'Ton'", "An Upside-down Elephant", "A Rolling Stone"]
 }];
 
 
