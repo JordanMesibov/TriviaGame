@@ -30,6 +30,8 @@ function start () {
   if (!timerRunning) {
     intervalID = setInterval(count, 1000);
     timerRunning = true;
+    //hide the riddler image!!!!! ------------------
+   
     riddlesGo ();
   }
 }
@@ -64,6 +66,8 @@ var riddles = [{
 
 // declare the function that will display the riddles to the riddleDisplay div
 function riddlesGo () {
+  //hide the riddler image
+
   // rewrite the riddleDisplay div to show the first riddle
   $("#riddleDisplay").html("<h2>" + riddles[0].riddleText[0] + "</h2>");
   // add a line break
@@ -89,6 +93,7 @@ function riddlesGo () {
 // make the function that will show the Correct! screen and display it to the riddleDisplay div
 function correctScreen0 () {
   $("#riddleDisplay").html("<h1>Correct!</h1>");
+  $("#riddleDisplay").append(<img src="assets/images/abed.jpg" alt="Coolcoolcool"></img>);
   $("#riddleDisplay").append($("<button id='Next0'><h1>Next Riddle!</h1></button>"));
   document.getElementById("Next0").addEventListener("click", riddlesGoNext);
 }
