@@ -6,17 +6,21 @@ window.onload = function() {
 //establish important variables necessary to start and reset the timer
 var intervalID;
 var timerRunning = false;
-//set time to start from 90 seconds
-var time = 90;
+//set time to start from 60 seconds
+var time = 60;
 // declare flag for checking if the timer is at 0 yet
 var timesUp = false;
+
+var correctAnswers = 0;
 
 // declare the reset function
 function reset() {
   clearInterval(intervalID);
-  time = 90;
+  time = 60;
   timesUp = false;
   timerRunning = false;
+  correctAnswers = 0;
+  console.log(correctAnswers);
   $("#riddleDisplay").empty();
   $("#timerDisplay").html("<h3>Time Remaining: " + time + " seconds</h3>");
 }
@@ -55,6 +59,10 @@ var riddles = [{
     correctChoice: ["A Candle", "2 Correct", "3 Correct"]
 }];
 
+
+
+// FIRST RIDDLE FUNCTION BELOW ================================================================================
+
 // declare the function that will display the riddles to the riddleDisplay div
 function riddlesGo () {
   // rewrite the riddleDisplay div to show the first riddle
@@ -73,11 +81,10 @@ function riddlesGo () {
   $("#riddleDisplay").append($("<button id='incorrect00'>" + riddles[0].riddleChoices[2] + "</button>"));
   // add event listeners for the right and wrong choices/buttons to trigger the correctScreen and incorrectScreen functions declared globally, afterwards
   document.getElementById("correct0").addEventListener("click", correctScreen0);
-  console.log(correctScreen0);
+  document.getElementById("correct0").addEventListener("click", correctAnswersCount);
+  console.log(correctAnswersCount);
   document.getElementById("incorrect0").addEventListener("click", incorrectScreen0);
-  console.log(incorrectScreen0);
   document.getElementById("incorrect00").addEventListener("click", incorrectScreen0);
-  console.log(incorrectScreen0);
 }
 
 // make the function that will show the Correct! screen and display it to the riddleDisplay div
@@ -95,6 +102,8 @@ function incorrectScreen0 () {
   document.getElementById("Next00").addEventListener("click", riddlesGoNext);
 }
 
+// SECOND RIDDLE FUNCTION BELOW ===============================================================
+
 function riddlesGoNext () {
   $("#riddleDisplay").html("<h2>" + riddles[0].riddleText[1] + "</h2>");
   // add a line break
@@ -111,11 +120,10 @@ function riddlesGoNext () {
   $("#riddleDisplay").append($("<button id='incorrect01'>" + riddles[0].riddleChoices[5] + "</button>"));
   // add event listeners for the right and wrong choices/buttons to trigger the correctScreen and incorrectScreen functions declared globally, afterwards
   document.getElementById("correct1").addEventListener("click", correctScreen1);
-  console.log(correctScreen1);
+  document.getElementById("correct1").addEventListener("click", correctAnswersCount);
+  console.log(correctAnswers);
   document.getElementById("incorrect1").addEventListener("click", incorrectScreen1);
-  console.log(incorrectScreen1);
   document.getElementById("incorrect01").addEventListener("click", incorrectScreen1);
-  console.log(incorrectScreen1);
 }
 
 function correctScreen1 () {
@@ -130,6 +138,8 @@ function incorrectScreen1 () {
   $("#riddleDisplay").append($("<button id='Next02'><h1>Next Riddle!</h1></button>"));
   document.getElementById("Next02").addEventListener("click", riddlesGoNext1);
 }
+
+// THIRD AND FINAL RIDDLE FUNCTION BELOW =================================================
 
 // this will be the final riddle and will trigger a results screen at the end!
 function riddlesGoNext1 () {
@@ -148,9 +158,37 @@ function riddlesGoNext1 () {
   $("#riddleDisplay").append($("<button id='incorrect02'>" + riddles[0].riddleChoices[8] + "</button>"));
   // add event listeners for the right and wrong choices/buttons to trigger the correctScreen and incorrectScreen functions declared globally, afterwards
   document.getElementById("correct2").addEventListener("click", correctScreen2);
-  console.log(correctScreen2);
+  document.getElementById("correct2").addEventListener("click", correctAnswersCount);
+  console.log(correctAnswers);
+  //add code to stop the timer from ticking anymore if this button gets clicked
+  clearInterval(intervalID);
   document.getElementById("incorrect2").addEventListener("click", incorrectScreen2);
-  console.log(incorrectScreen2);
+  //add code to stop the timer from ticking anymore if this button gets clicked
+  clearInterval(intervalID);
   document.getElementById("incorrect02").addEventListener("click", incorrectScreen2);
-  console.log(incorrectScreen2);
+  //add code to stop the timer from ticking anymore if this button gets clicked
+  clearInterval(intervalID);
+}
+
+function correctScreen2 () {
+  $("#riddleDisplay").html("<h1>Correct!</h1>");
+  $("#riddleDisplay").append($("<button id='Next3'><h1>Click To See Your Score!</h1></button>"));
+  document.getElementById("Next3").addEventListener("click", endOfRiddles);
+}
+
+function incorrectScreen2 () {
+  $("#riddleDisplay").html("<h1>Incorrect!</h1>");
+  $("#riddleDisplay").append($("<button id='Next03'><h1>Click To See Your Score!</h1></button>"));
+  document.getElementById("Next03").addEventListener("click", endOfRiddles);
+}
+
+function correctAnswersCount () {
+  // increase the number of correct answers by 1
+  correctAnswers += 1;
+  console.log(correctAnswers);
+}
+
+function endOfRiddles () {
+  $("#riddleDisplay").html("<h3>You answered " + correctAnswers + "/3 riddles correctly!</h3>");
+  console.log(correctAnswers);
 }
