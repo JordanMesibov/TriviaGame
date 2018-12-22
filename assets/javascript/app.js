@@ -93,7 +93,6 @@ function riddlesGo () {
 // make the function that will show the Correct! screen and display it to the riddleDisplay div
 function correctScreen0 () {
   $("#riddleDisplay").html("<h1>Correct!</h1>");
-  $("#riddleDisplay").append(<img src="assets/images/abed.jpg" alt="Coolcoolcool"></img>);
   $("#riddleDisplay").append($("<button id='Next0'><h1>Next Riddle!</h1></button>"));
   document.getElementById("Next0").addEventListener("click", riddlesGoNext);
 }
