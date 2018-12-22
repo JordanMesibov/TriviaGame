@@ -30,8 +30,6 @@ function start () {
   if (!timerRunning) {
     intervalID = setInterval(count, 1000);
     timerRunning = true;
-    //hide the riddler image!!!!! ------------------
-   
     riddlesGo ();
   }
 }
